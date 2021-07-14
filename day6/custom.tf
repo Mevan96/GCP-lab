@@ -31,7 +31,7 @@ resource "google_container_cluster" "ym-gke-cluster" {
 module "my-app-workload-identity" {
   source        = "terraform-google-modules/kubernetes-engine/google//modules/workload-identity"
   cluster_name  = google_container_cluster.ym-gke-cluster.name
-  name          = "sharayaugkeservice"
+  name          = "ymgkeservice"
   namespace     = kubernetes_namespace.nginxns.metadata.0.name
   project_id    = "gcp-lab-1-ym"
   roles         = ["projects/gcp-lab-1-ym/roles/custom_role"]
