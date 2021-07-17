@@ -24,8 +24,6 @@ resource "google_sql_database_instance" "instance" {
 
   database_version  = "MYSQL_8_0"
 
-  depends_on        = [google_service_networking_connection.private_vpc_connection]
-
   settings {
     tier              = "db-f1-micro"
     availability_type = "REGIONAL"
