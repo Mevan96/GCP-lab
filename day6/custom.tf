@@ -4,8 +4,8 @@ resource "google_project_iam_custom_role" "custom_role" {
   project     = "gcp-lab-1-ym"
   stage       = "ALPHA"
   description = "get files from all bucket and info abou VMs in project"
-  permissions = ["storage.buckets.get", "compute.instances.get",
-   "storage.buckets.list", "compute.instances.list"]
+  permissions = ["compute.instances.get",
+  "storage.objects.list" , "storage.objects.get", "compute.instances.list"]
 }
 
 resource "google_service_account" "mikhalchuk-gke" {
