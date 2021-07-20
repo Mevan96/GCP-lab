@@ -1,0 +1,11 @@
+project        = "gcp-lab-1-ym"
+region         = "us-central1"
+name           = "nginx-terraform"
+image_family   = "centos-7-v20210701"
+machine_type   = "custom-1-4608"
+network        = "gcp-lab-1-ym-vpc"
+pub_subnetwork = "public-subnetwork"
+pri_subnetwork = "private-subnet"
+instance_name  = "template-instance"
+install        = "sudo yum install -y nginx; sudo systemctl enable nginx; sudo systemctl start nginx; echo 'Hello from Yauhen Mikhalchuk!' > /usr/share/nginx/html/index.html "
+count_instance = 3

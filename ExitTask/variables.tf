@@ -1,0 +1,11 @@
+variable "project" {}
+variable "image_family" {}
+variable "machine_type" {}
+variable "network" {}
+variable "pub_subnetwork" {}
+variable "pri_subnetwork" {}
+variable "region" {}
+variable "install" {}
+variable "name" {}
+variable "instance_name" {}
+variable "count_instance" {}
