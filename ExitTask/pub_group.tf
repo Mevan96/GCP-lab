@@ -34,3 +34,22 @@ resource "google_compute_instance_group" "nginx-group" {
     port = "80"
   }
 }
+
+resource "google_compute_backend_service" "nginx_service" {
+  name      = "nginx-service"
+  port_name = "http"
+  protocol  = "HTTP"
+
+  backend {
+    group = google_compute_instance_group.nginx-group.id
+  }
+
+  health_checks = [
+    google_compute_http_health_check.nginx_health.id,
+  ]
+}
+
+resource "google_compute_http_health_check" "nginx_health" {
+  name         = "nginx-health"
+  request_path = "/"
+}
