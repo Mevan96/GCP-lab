@@ -1,16 +1,16 @@
 resource "google_compute_global_forwarding_rule" "nginx_service" {
-  name       = "global-rule"
+  name       = "nginx-rule"
   target     = google_compute_target_http_proxy.nginx_service.id
   port_range = "80"
 }
 
 resource "google_compute_target_http_proxy" "nginx_service" {
-  name    = "test-proxy"
+  name    = "nginx-proxy"
   url_map = google_compute_url_map.nginx_service.id
 }
 
 resource "google_compute_url_map" "nginx_service" {
-  name            = "url-map"
+  name            = "nginx-balancer"
   default_service = google_compute_backend_service.nginx_service.id
 
   host_rule {

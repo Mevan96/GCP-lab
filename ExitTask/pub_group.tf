@@ -15,14 +15,16 @@ resource "google_compute_instance" "nginx_terra" {
     network            = var.network
     subnetwork         = var.pub_subnetwork
     subnetwork_project = var.project
+    access_config {}
   }
 
-  metadata_startup_script = var.install
+  metadata_startup_script = file("scripts/startup.sh")
 }
 
 resource "google_compute_instance_group" "nginx-group" {
   name        = "nginx-group"
   project     = var.project
+  zone        = "us-central1-b"
   description = "Terraform nginx instance group"
 
   instances = [
