@@ -28,12 +28,11 @@ resource "google_compute_firewall" "ingress-firewall" {
   network     = google_compute_network.vpc_network.name
   project     = var.project
   direction   = "INGRESS"
-  description = "internal 80, 22 ports access"
+  description = "internal 80, 22, 5432, 8081 ports access"
 
   allow {
     protocol = "tcp"
-    # ports    = ["80", "22"]
-    ports = ["0-65535"]
+    ports    = ["80", "22", "5432", "8081"]
   }
 }
 
