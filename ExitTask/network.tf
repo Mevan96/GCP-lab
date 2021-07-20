@@ -28,11 +28,11 @@ resource "google_compute_firewall" "ingress-firewall" {
   network     = google_compute_network.vpc_network.name
   project     = var.project
   direction   = "INGRESS"
-  description = "internal 80, 22, 5432, 8081 ports access"
+  description = "external 80, 22 ports access"
 
   allow {
     protocol = "tcp"
-    ports    = ["80", "22", "5432", "8081"]
+    ports    = ["80", "22"]
   }
 }
 
@@ -41,10 +41,10 @@ resource "google_compute_firewall" "egress-firewall" {
   network     = google_compute_network.vpc_network.name
   project     = var.project
   direction   = "EGRESS"
-  description = "internal access by 0-65535 ports"
+  description = "internal access by 80, 22, 5432, 8081 ports"
 
   allow {
     protocol = "tcp"
-    ports    = ["0-65535"]
+    ports    = ["80", "22", "5432", "8081"]
   }
 }
